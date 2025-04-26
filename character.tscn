@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://cphv10vqswbl8"]
+
+[ext_resource type="Texture2D" uid="uid://bneuqx2q70uiq" path="res://craftpix-net-563568-free-wraith-tiny-style-2d-sprites/PNG/Wraith_01/PNG Sequences/Idle/Wraith_01_Idle_008.png" id="1_crl8d"]
+[ext_resource type="Script" uid="uid://rqi6pfxirnh3" path="res://godot-diva/character.gd" id="1_l6pyh"]
+[ext_resource type="Texture2D" uid="uid://bhjqdptmdpkii" path="res://craftpix-net-563568-free-wraith-tiny-style-2d-sprites/PNG/Wraith_01/PNG Sequences/Walking/Wraith_01_Moving Forward_000.png" id="2_l6pyh"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yfe3n"]
+animations = [{
+"frames": [{
+"duration": 0.3,
+"texture": ExtResource("1_crl8d")
+}, {
+"duration": 0.3,
+"texture": ExtResource("2_l6pyh")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 3.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ugbib"]
+radius = 38.0
+height = 108.0
+
+[node name="character" type="Area2D"]
+script = ExtResource("1_l6pyh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(232, 148)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_yfe3n")
+animation = &"walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(232, 148)
+shape = SubResource("CapsuleShape2D_ugbib")
